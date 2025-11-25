@@ -328,7 +328,7 @@
                   <div class="role">Lead Software Engineer</div>
                   <div class="company">Walmart &mdash; Sunnyvale, CA (Remote)</div>
                 </div>
-                <div class="meta">Sep 2024 &ndash; Present &nbsp;|&nbsp; Equinoxys Inc / Randstad</div>
+                <div class="meta">Sep 2024 &ndash; Present &nbsp;|&nbsp; Equinoxys Inc</div>
               </div>
               <div class="exp-body">
                 <ul>
