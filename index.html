@@ -513,5 +513,37 @@
     // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script>
+async function sendVisitorInfo() {
+  try {
+    // 1) Get IP and location
+    const info = await fetch("https://ipapi.co/json/").then(r => r.json());
+
+    // 2) Your Google Form POST URL
+    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfmZpaE_8uVGVdpHm_H33XGxPd70lAEHjM6hGhOtZVuTFOnRQ/formResponse";
+    // 3) Build form payload
+    const fd = new FormData();
+    fd.append("entry.215844663", info.ip);                       // IP
+    fd.append("entry.63806014", info.city);                      // City
+    fd.append("entry.1592875590", info.region);                  // Region
+    fd.append("entry.1678409188", info.country_name);            // Country
+    fd.append("entry.1880207409", new Date().toISOString());     // Timestamp
+    fd.append("entry.789109554", navigator.userAgent);           // Browser / Device
+
+    // 4) Submit silently
+    await fetch(formUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: fd
+    });
+
+  } catch (err) {
+    console.error("Visitor tracking failed:", err);
+  }
+}
+
+// Run automatically on page load
+sendVisitorInfo();
+</script>
 </body>
 </html>
